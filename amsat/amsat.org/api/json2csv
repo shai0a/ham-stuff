@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#jq -r 'map({AOS_time,pass_duration,AOS_azimuth,max_elevation,max_elev_azimuth,LOS_azimuth}) | (first | keys_unsorted) as $keys | map([to_entries[] | .value]) as $rows | $keys,$rows[] | @csv' ${1} > out.csv
+
+jq -r '(map(keys) | add | unique) as $cols | $cols, map(. as $row | $cols | map($row[.]))[] | @csv' $1
+

@@ -1,0 +1,17 @@
+Convert start azimuth column (K) to date format
+1. select column K (click 'K')
+2. Format -> Number Format -> Date
+
+Highlight rows for today
+1. select all rows (Ctrl+A)
+2. Format -> Conditional -> Condition
+3. Under Condition 1, change 'Cell value' to 'Formula is'
+4. Enter formula SEARCH(today(), $K2)>=0
+5. Change 'Apply Style:' from 'Accent' to e.g., 'Good'
+6. Apply changes with 'OK'
+
+Change date to desired format
+1. select column K
+2. Format -> Cells OR Ctrl+1
+3. select 'Date' or 'Time' Category and desired Format.
+4. Apply changes with 'OK'
