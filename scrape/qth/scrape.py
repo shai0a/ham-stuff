@@ -1,3 +1,4 @@
+import re
 import time
 import datetime
 import requests
@@ -10,11 +11,10 @@ page = 1
 startnum = 0
 
 with open(r"qth_%s.txt" % today.replace("/", "."), "w") as f:
-    print("Scraping page", end="", flush=True)
     while True:
-        print(" %d " % page, end="", flush=True)
         r = requests.get(url + str(startnum))
         s = BeautifulSoup(r.content, "html.parser")
+        print(s.find(string=re.compile("ads matching your search for")))
         dl = s.find("dl")
         dts = dl.find_all("dt")
         if not dts:
@@ -25,5 +25,4 @@ with open(r"qth_%s.txt" % today.replace("/", "."), "w") as f:
         startnum += 10
         page += 1
         time.sleep(3)
-    print()
     f.close()
