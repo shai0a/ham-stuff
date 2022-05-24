@@ -2,7 +2,7 @@
 
 # Requires xml2
 
-# Outputs CSV of liceness matching callsign
+# Outputs CSV of licenses matching callsign
 
 # https://www.fcc.gov/reports-research/developers/license-view-api
 
