@@ -14,7 +14,7 @@ with open(r"qth_%s.txt" % today.replace("/", "."), "w") as f:
     while True:
         r = requests.get(url + str(startnum))
         s = BeautifulSoup(r.content, "html.parser")
-        print(s.find(string=re.compile("ads matching your search for")))
+        print(s.find(string=re.compile("ads matching your search for")).replace("Displaying", "Scraping"), end="")
         dl = s.find("dl")
         dts = dl.find_all("dt")
         if not dts:
