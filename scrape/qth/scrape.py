@@ -19,9 +19,8 @@ with open(r"qth_%s.txt" % today.replace("/", "."), "w") as f:
         dts = dl.find_all("dt")
         if not dts:
             break
-        f.write(dt.text + "\n")
+        f.write(dts[0].text + "\n")
         # each page contains ten results
         startnum += 10
         page += 1
-        time.sleep(3)
     f.close()
