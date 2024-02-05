@@ -1,0 +1,24 @@
+WSJT-X on FreeBSD using KX3 with DigiLink NANO and KXUSB cable
+
+DigiLink NANO - digital modes interface (sound card)
+KXUSB - used for CAT
+
+1. Connect FTDI adapter to PX3/KX3 ACC1 PC
+2. Connect USB sound card to KX3 (Green to PHONES, RED to MIC)
+3. Install wsjtx - pkg install wsjtx
+4. Add user to dialout group - pw groupmod dialout -m $USER
+5. Make sure time is correctly synced/set (ntpdate -b pool.ntp.org)
+6. File -> Settings -> General - set callsign/grid square
+7. File -> Settings -> Radio - set Rig -> Elecraft KX3
+	Serial Port -> /dev/cuaU0
+	Baud Rate -> 38400 (KX3 menu option 'RS232')
+	PTT Method -> CAT
+	Mode -> USB
+8. Find audio device - cat /dev/sndstat (DigiLink NANO shows up as <USB audio>)
+	Set default audio device - sysctl -w hw.snd.default_unit=N
+9. Set volume (e.g., mixer mic 50:50, KX3 -> AF / RF SQL knob) so that dB bar is green. If volume is too low or too high nothing will show on graph
+
+Notes:
+Setting hw.snd.default_auto=2 to use most recently attached sound device
+Suspend hangs indefinitely while wsjt-x is open
+If there is activity on the graph but wsjt-x is not decoding it is possible that the time is not correctly set
